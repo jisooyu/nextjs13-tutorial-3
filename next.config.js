@@ -18,6 +18,18 @@ const nextConfig = {
 		};
 		return config;
 	},
+	async headers() {
+		return [
+			{
+				// matching all API routes
+				source: '/api/:path*',
+				headers: [
+					{ key: 'Cache-Control', value: 'no-cache' },
+					{ key: 'Pragma', value: 'no-cache' },
+				],
+			},
+		];
+	},
 };
 
 module.exports = nextConfig;
