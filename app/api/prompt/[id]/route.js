@@ -24,7 +24,7 @@ export const PATCH = async (request, { params }) => {
 		await connectToDB();
 		const existingPrompt = await Prompt.findById(params.id);
 		if (!existingPrompt)
-			return new Responet('Prompt not found', { status: 404 });
+			return new Response('Prompt not found', { status: 404 });
 		existingPrompt.prompt = prompt;
 		existingPrompt.tag = tag;
 		await existingPrompt.save();
